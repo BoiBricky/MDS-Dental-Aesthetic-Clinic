@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Clinic</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Dental Clinic</h1>
+        <button onclick="showForm('intake')">Patient Intake Form</button>
+        <button onclick="showForm('booking')">Appointment Booking Form</button>
+    </div>
+
+    <div id="intake" class="form-container">
+        <h2>Patient Intake Form</h2>
+        <form id="patient-intake-form" action="submit_form.php" method="post">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="medical-history">Medical History:</label>
+            <textarea id="medical-history" name="medical-history" rows="4" required></textarea>
+
+            <label for="allergies">Allergies:</label>
+            <input type="text" id="allergies" name="allergies">
+
+            <label for="emergency-contact">Emergency Contact:</label>
+            <input type="text" id="emergency-contact" name="emergency-contact" required>
+
+            <button type="submit" class="submit-button">Submit</button>
+            <button type="button" class="back-button" onclick="goBack()">Back to Main Menu</button>
+        </form>
+    </div>
+
+    <div id="booking" class="form-container">
+        <h2>Appointment Booking Form</h2>
+        <form id="booking-form" action="submit_booking.php" method="post">
+            <label for="appointment-date">Preferred Appointment Date:</label>
+            <input type="date" id="appointment-date" name="appointment-date" required>
+
+            <label for="appointment-time">Preferred Appointment Time:</label>
+            <input type="time" id="appointment-time" name="appointment-time" required>
+
+            <label for="treatment-type">Type of Treatment:</label>
+            <select id="treatment-type" name="treatment-type" required>
+                <option value="">Select a treatment</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Filling">Filling</option>
+                <option value="Extraction">Extraction</option>
+                <option value="Checkup">Checkup</option>
+            </select>
+
+            <label for="notes">Additional Notes:</label>
+            <textarea id="notes" name="notes" rows="3"></textarea>
+
+            <button type="submit" class="submit-button">Submit</button>
+            <button type="button" class="back-button" onclick="goBack()">Back to Main Menu</button>
+        </form>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('intake').style.display = 'none';
+            document.getElementById('booking').style.display = 'none';
+
+            document.getElementById(formId).style.display = 'block';
+        }
+
+        function goBack() {
+            document.querySelector('.container').style.display = 'block';
+            document.getElementById('intake').style.display = 'none';
+            document.getElementById('booking').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
